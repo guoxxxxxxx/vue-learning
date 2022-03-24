@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件渲染</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <button @click="changeVisible">BUTTON</button>
+        <!-- 使用v-show做条件渲染 -->
+        <h1 v-show="isShow">Welcome to Vue! SHOW</h1>
+
+        <!-- 使用v-if做条件渲染 -->
+        <h1 v-if="isShow">Welcome to Vue! IF</h1>
+    </div>
+</body>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#root",
+        data() {
+            return {
+                isShow: false,
+            }
+        },
+        methods: {
+            changeVisible(){
+                this.isShow = !this.isShow;
+            },
+        },
+    })
+</script>
+
+</html>
