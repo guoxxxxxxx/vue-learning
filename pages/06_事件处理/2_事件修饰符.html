@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../../js/vue.js"></script>
+</head>
+<style>
+    *{
+        margin-top: 20px;
+    }
+    .box1{
+        height: 50px;
+        padding: 5px;
+        background-color: aqua;
+    }
+    .box2{
+        height: 50px;
+        padding: 5px;
+        background-color: pink;
+    }
+</style>
+<!-- 
+    1. prevent 阻值默认事件
+    2. stop: 阻值事件冒泡
+    3. once: 事件只触发一次
+ -->
+<body>
+    <div id="root">
+        <!-- 阻值默认事件 -->
+        <a href="http://www.baidu.com" @click.prevent="showInfo">点我提示信息</a>
+
+        <!-- 阻值冒泡事件 -->
+        <div @click="showInfo">
+            <button @click.stop="showInfo">点我看事件冒泡</button>
+        </div>
+
+        <!-- 事件只触发一次 -->
+        <button @click.once="showInfo">事件只触发一次</button>
+
+        <!-- 使用事件的捕获模式 -->
+        <div class="box1" @click="showMsg(1)">
+            div1
+            <div class="box2" @click="showMsg(2)">
+                div2
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#root",
+        data() {
+            return {
+                
+            }
+        },
+        methods: {
+            showInfo(){
+                alert("alert");
+            },
+            showMsg(msg){
+                alert("the message is " + msg)
+            }
+        },
+    })
+</script>
+
+</html>
