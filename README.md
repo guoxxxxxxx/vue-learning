@@ -1,12 +1,17 @@
-# vue-learning
+# Vue资源
 
-## 一、 初识Vue
-- 略过
 
-## 二、 数据绑定
-- v-bind：单向数据绑定可以简写成“ : ”
-- v-model：双向数据绑定
 
-## 十、 条件渲染
+- 官网
 
-- 
+​	https://cn.vuejs.org/
+
+
+
+## 一、比较好看的组件
+
+1. **https://artemsky.github.io/vue-snotify/**
+2. 聊天系统
+
+**https://github.com/TugayYaldiz/vue-comment-grid**
+
