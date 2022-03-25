@@ -10,13 +10,24 @@
 </head>
 <body>
     <div id="root">
-
+        <h2>当前n的值为: {{n}}</h2>
+        <button @click="add">点我n+1</button>
     </div>
 </body>
 
 <script type="text/javascript">
     var vm = new Vue({
         el: "#root",
+        data() {
+            return {
+                n: 1,
+            }
+        },
+        methods: {
+            add(){
+                this.n++;
+            }
+        },
     })
 </script>
 
