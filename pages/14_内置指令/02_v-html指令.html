@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-html</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div v-text="str"></div>
+        <div v-html="str"></div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#root",
+        data() {
+            return {
+                name: 'Vue',
+                str: '<h3>Hello! </h3>'
+            }
+        },
+    })
+</script>
+
+</html>

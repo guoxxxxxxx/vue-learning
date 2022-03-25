@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-Once</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../../js/vue.js"></script>
+</head>
+<!-- 
+    只读取第一次的值, 后续更新不再更新
+ -->
+<body>
+    <div id="root">
+        <h2 v-once>初始化的n值是: {{n}}</h2>
+        <h2>当前的n值是: {{n}}</h2>
+        <button @click="n++">点我+1</button>
+    </div>
+</body>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#root",
+        data() {
+            return {
+                n: 1,
+            }
+        },
+    })
+</script>
+
+</html>
