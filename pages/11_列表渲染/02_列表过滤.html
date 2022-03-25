@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表过滤</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <input type="text" placeholder="Search" v-model="keyWord">    
+        <ul>
+            <li v-for="person in filPersons" ::key="person.id">
+                {{person.name}}-{{person.age}}
+            </li>
+        </ul>
+    </div>
+</body>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#root",
+        data() {
+            return {
+                persons:[
+                    {id: '001', name: '马冬梅', age: '18'},
+                    {id: '002', name: '周冬雨', age: '17'},
+                    {id: '003', name: '周杰伦', age: '19'},
+                    {id: '004', name: '邓伦', age: '19'},
+                ],
+                keyWord: "",
+            }
+        },
+        methods: {
+            
+        },
+        // watch: {
+        //     keyWord:{
+        //         immediate: true,
+        //         handler(val){
+        //             this.filPersons = this.persons.filter((p)=>{
+        //                 return p.name.indexOf(val) != -1;
+        //             })
+        //         }
+        //     }
+        // },
+        computed: {
+            filPersons(){
+                return this.persons.filter((p)=>{
+                    return p.name.indexOf(this.keyWord) != -1;
+                })
+            }
+        }
+    })
+</script>
+
+</html>
