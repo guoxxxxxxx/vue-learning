@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表排序</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <input type="text" v-model="keyWord" placeholder="Search"> <br>
+        <button @click="sortType=1">年龄升序</button>
+        <button @click="sortType=2">年龄降序</button>
+        <button @click="sortType=0">默认</button>
+        <ul>
+            <li v-for="person in filPersons" ::key="person.id">
+                {{person.name}}-{{person.age}}
+            </li>
+        </ul>
+    </div>
+</body>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#root",
+        data() {
+            return {
+                persons:[
+                    {id: '001', name: '张三', age: '18'},
+                    {id: '002', name: '李三', age: '17'},
+                    {id: '003', name: '张五', age: '19'},
+                    {id: '004', name: '李大五', age: '29'},
+                ],
+                keyWord: "",
+                sortType: 0,    // 0代表原顺序，1代表升序， 2 代表降序
+            }
+        },
+        methods: {
+            
+        },
+        computed: {
+            filPersons(){
+                var tempPersons = this.persons.filter((p)=>{
+                    return p.name.indexOf(this.keyWord) != -1;
+                });
+                // 判断是否需要排序
+                if(this.sortType === 0){
+                    return tempPersons;
+                }
+                else{
+                    tempPersons.sort((p1, p2) => {
+                        return this.sortType === 1 ? p1.age - p2.age : p2.age - p1.age;
+                    })
+                }
+                return tempPersons;
+            }
+        }
+    })
+</script>
+
+</html>
