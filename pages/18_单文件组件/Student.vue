@@ -1,9 +1,9 @@
 // 组件的结构
 <template>
     <div class="school">
-        <h2>学校姓名: {{schoolName}}</h2>
-        <h2>学校地址: {{schoolAddress}}</h2>
-        <button @click="showName">点我提示学校姓名</button>
+        <h2>学校姓名: {{name}}</h2>
+        <h2>学校地址: {{age}}</h2>
+        <button @click="showName">点我提示学生姓名</button>
     </div>
 </template>
 
@@ -12,13 +12,13 @@
 export default {
     data() {
         return {
-            schoolName: 'hebust',
-            schoolAddress: 'yx26'
+            name: 'hebust',
+            age: 19,
         }
     },
     methods: {
         showName(){
-            alert('河北科技大学');
+            alert(this.name);
         }
     },
 }
