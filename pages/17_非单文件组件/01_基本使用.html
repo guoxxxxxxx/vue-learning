@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- 编写组件标签 -->
+        <school></school>
+        <hr>
+        <student></student>
+    </div>
+</body>
+
+<script type="text/javascript">
+
+    // 创建school组件
+    const school = Vue.extend({
+        template:
+        `
+            <div>
+                <h2>学校名称: {{schoolName}}</h2>
+                <h2>学校地址: {{address}}</h2>
+            </div>
+        `,
+        // el: "#root", 组件不要写el配置项，因为最终所有组件都要被一个VM管理, 由VM决定与服务于哪个对象
+        data() {
+            return {
+                schoolName: 'hebust',
+                address: 'shiJiaZhuang',
+            }
+        },
+    })
+
+    // 创建Student组件
+    const student = Vue.extend({
+        template:
+        `
+            <div>
+                <h2>学生名称: {{studentName}}</h2>
+                <h2>学生年龄: {{age}}</h2>
+            </div>
+        `,
+        data() {
+            return {
+                studentName: 'jack',
+                age: 18,
+            }
+        },
+    })
+
+
+    // 创建VM
+    new Vue({
+        el:'#root',
+        // 注册组件(局部注册)
+        components:{
+            school: school,
+            student: student
+        }
+    })
+
+    //#region 
+    // var vm = new Vue({
+    //     el: "#root",
+    //     data() {
+    //         return {
+    //             schoolName: 'hebust',
+    //             address: 'shiJiaZhuang',
+    //             studentName: 'lyb',
+    //             age: '18'
+    //         }
+    //     },
+    // })
+    //#endregion
+</script>
+
+</html>
